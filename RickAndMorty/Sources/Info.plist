@@ -4,8 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>interRegular.ttf</string>
-		<string>interBold.ttf</string>
+		<string>Inter_28pt-Regular.ttf</string>
+		<string>Inter_28pt-Bold.ttf</string>
 	</array>
 </dict>
 </plist>
