@@ -13,11 +13,6 @@ final class TabBarController: UITabBarController {
     
     // MARK: - Private properties
     
-    private lazy var mainView = {
-        let view = UIView()
-        return view
-    }()
-    
     private enum TabBarItem {
         case characters
         case search
@@ -32,21 +27,23 @@ final class TabBarController: UITabBarController {
         }
     }
     
+    private var backgroundImageView: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
+        imageView.image = R.image.backgroundImage()
+        imageView.contentMode = .scaleToFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     // MARK: - Initializers
     
-//    init() {
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
     
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupTabBar()
+        setupUI()
+        setupTabBar()
     }
     
     // MARK: - Public methods
@@ -55,6 +52,12 @@ final class TabBarController: UITabBarController {
     
     // MARK: - Private methods
     
+    private func setupUI() {
+        view.insertSubview(backgroundImageView, at: 0)
+        
+        setupLayout()
+    }
+    
     private func setupTabBar() {
         let dataSource: [TabBarItem] = [.characters, .search, .favorites]
         
@@ -62,13 +65,13 @@ final class TabBarController: UITabBarController {
             switch $0 {
             case .characters:
                 let charactersViewController = CharactersViewController()
-                return self.wrappedInNavigationController(with: charactersViewController, title: $0.title)
+                return self.wrappedInNavigationController(with: charactersViewController)
             case .search:
                 let searchViewController = SearchViewController()
-                return self.wrappedInNavigationController(with: searchViewController, title: $0.title)
+                return self.wrappedInNavigationController(with: searchViewController)
             case .favorites:
                 let favoritesViewController = FavoritesViewController()
-                return self.wrappedInNavigationController(with: favoritesViewController, title: $0.title)
+                return self.wrappedInNavigationController(with: favoritesViewController)
             }
         }
         
@@ -77,18 +80,21 @@ final class TabBarController: UITabBarController {
             $1.tabBarItem.title = dataSource[$0].title
             $1.tabBarItem.setTitleTextAttributes([.font: R.font.inter28ptRegular(size: 20)!], for: .normal)
         }
-//        self.tabBar.translatesAutoresizingMaskIntoConstraints = false
         self.tabBar.backgroundColor = R.color.gray()
         self.tabBar.unselectedItemTintColor = R.color.starBackground()
         self.tabBar.tintColor = R.color.light()
-//        self.tabBar.heightAnchor.constraint(equalToConstant: 180).isActive = true
-//        
-//        self.tabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor ).isActive = true
-//        self.tabBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
 
-    private func wrappedInNavigationController(with: UIViewController, title: Any?) -> UINavigationController {
+    private func wrappedInNavigationController(with: UIViewController) -> UINavigationController {
         return UINavigationController(rootViewController: with)
     }
     
+    private func setupLayout() {
+        NSLayoutConstraint.activate([
+            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
 }

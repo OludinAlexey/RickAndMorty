@@ -32,7 +32,7 @@ final class SearchViewController: UIViewController {
     
     override func loadView() {
         view = mainView
-        view.backgroundColor = .systemGray
+//        view.backgroundColor = .systemGray
     }
     
     // MARK: - Public methods

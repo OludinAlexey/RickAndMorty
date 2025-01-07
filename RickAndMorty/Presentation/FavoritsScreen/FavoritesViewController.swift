@@ -32,7 +32,7 @@ final class FavoritesViewController: UIViewController {
     
     override func loadView() {
         view = mainView
-        view.backgroundColor = .systemGreen
+//        view.backgroundColor = .systemGreen
     }
     
     // MARK: - Public methods

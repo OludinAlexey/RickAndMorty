@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class View: UIView {
+final class CharactersView: UIView {
     
     // MARK: - Public properties
     

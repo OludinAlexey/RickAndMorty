@@ -32,7 +32,6 @@ final class CharactersViewController: UIViewController {
     
     override func loadView() {
         view = mainView
-        view.backgroundColor = .orange
         
     }
     
