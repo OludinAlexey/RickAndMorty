@@ -13,6 +13,19 @@ final class CharactersView: UIView {
     
     // MARK: - Private properties
     
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.toAutoLayout()
+        label.font = R.font.inter28ptRegular(size: 24)
+        label.textColor = R.color.primaryText()
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.2
+        label.text = "Characters"
+        return label
+    }()
+    
     // MARK: - Initializers
     
     init() {
@@ -42,12 +55,16 @@ final class CharactersView: UIView {
     }
     
     private func addSubviews() {
-        [ ] .forEach { addSubview($0) }
+        [ titleLabel ] .forEach { addSubview($0) }
     }
     
     private func setupLayout() {
+        
         NSLayoutConstraint.activate([
-            
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 50),
+            titleLabel.widthAnchor.constraint(equalToConstant: 220)
         ])
     }
 }

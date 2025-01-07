@@ -14,7 +14,7 @@ final class CharactersViewController: UIViewController {
     // MARK: - Private properties
     
     private lazy var mainView = {
-        let view = UIView()
+        let view = CharactersView()
         return view
     }()
     
