@@ -26,6 +26,8 @@ final class CharactersView: UIView {
         return label
     }()
     
+    private lazy var characterCardView = CharacterCardView()
+    
     // MARK: - Initializers
     
     init() {
@@ -55,7 +57,7 @@ final class CharactersView: UIView {
     }
     
     private func addSubviews() {
-        [ titleLabel ] .forEach { addSubview($0) }
+        [ titleLabel, characterCardView ] .forEach { addSubview($0) }
     }
     
     private func setupLayout() {
@@ -65,6 +67,13 @@ final class CharactersView: UIView {
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 50),
             titleLabel.widthAnchor.constraint(equalToConstant: 220)
+        ])
+        
+        NSLayoutConstraint.activate([
+            characterCardView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 33),
+            characterCardView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            characterCardView.heightAnchor.constraint(equalToConstant: 644),
+            characterCardView.widthAnchor.constraint(equalToConstant: 347)
         ])
     }
 }
