@@ -81,7 +81,7 @@ final class TabBarController: UITabBarController {
             $1.tabBarItem.setTitleTextAttributes([.font: R.font.inter28ptRegular(size: 20)!], for: .normal)
         }
         self.tabBar.backgroundColor = R.color.gray()
-        self.tabBar.unselectedItemTintColor = R.color.starBackground()
+        self.tabBar.unselectedItemTintColor = R.color.starBackgroundGray()
         self.tabBar.tintColor = R.color.light()
     }
 

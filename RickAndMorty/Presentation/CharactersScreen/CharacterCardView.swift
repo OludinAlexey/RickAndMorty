@@ -45,6 +45,7 @@ final class CharacterCardView: UIView {
     }()
     
     private lazy var favoriteView: FavoriteView = FavoriteView()
+    private lazy var characterInfoView: CharacterInfoView = CharacterInfoView()
     
     // MARK: - Initializers
     
@@ -72,16 +73,6 @@ final class CharacterCardView: UIView {
     private func setupUI() {
         backgroundColor = R.color.dark()
         
-        roundCorners(
-            corners: [
-                .layerMaxXMaxYCorner,
-                .layerMaxXMinYCorner,
-                .layerMinXMaxYCorner,
-                .layerMinXMinYCorner
-            ],
-            radius: 42
-        )
-        
         addSubviews()
         setupLayout()
     }
@@ -92,9 +83,10 @@ final class CharacterCardView: UIView {
             nameTitleLabel, nameLabel,
             statusTitleLabel, statusLabel,
             createdTitleLabel, createdLabel,
-            characterImageView, favoriteView
+            characterImageView,
+            favoriteView,
+            characterInfoView
         ] .forEach { addSubview($0) }
-//        insertSubview(favoriteView, aboveSubview: characterImageView)
     }
     
     private func setupLayout() {
@@ -134,7 +126,13 @@ final class CharacterCardView: UIView {
             favoriteView.widthAnchor.constraint(equalToConstant: 61),
             favoriteView.heightAnchor.constraint(equalToConstant: 54)
         ])
-            
+        
+        NSLayoutConstraint.activate([
+            characterInfoView.bottomAnchor.constraint(equalTo: characterImageView.bottomAnchor),
+            characterInfoView.trailingAnchor.constraint(equalTo: characterImageView.trailingAnchor),
+            characterInfoView.widthAnchor.constraint(equalToConstant: 63),
+            characterInfoView.heightAnchor.constraint(equalToConstant: 61)
+        ])
     }
     
     private func getTitleLabel(_ text: String) -> UILabel {

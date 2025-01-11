@@ -22,6 +22,7 @@ final class FavoriteView: UIView {
     init() {
         super.init(frame: .zero)
         setupUI()
+        configure(isFavorite: false)
     }
     
     required init?(coder: NSCoder) {
@@ -32,9 +33,9 @@ final class FavoriteView: UIView {
     
     // MARK: - Public methods
     
-    func configure(isFavorite: Bool, likeCount: Int){
+    func configure(isFavorite: Bool){
         isSelected = isFavorite
-        favoriteImageView.alpha = isSelected ? 0.8 : 0.5
+        favoriteImageView.tintColor = isSelected ? R.color.starBackgroundYellow() : R.color.starBackgroundGray()
     }
     
     override func layoutSubviews() {
@@ -52,6 +53,15 @@ final class FavoriteView: UIView {
     
     private func setupUI() {
         backgroundColor = .clear
+        roundCorners(
+            corners: [
+                .layerMaxXMaxYCorner,
+                .layerMaxXMinYCorner,
+                .layerMinXMaxYCorner,
+                .layerMinXMinYCorner
+            ],
+            radius: 32
+        )
         toAutoLayout()
         addSubviews()
         setupFavoriteImageView()
@@ -63,7 +73,7 @@ final class FavoriteView: UIView {
     }
     
     private func setupFavoriteImageView(){
-        favoriteImageView.tintColor = .yellow.withAlphaComponent(0.8)
+        favoriteImageView.tintColor = .yellow
         favoriteImageView.image = UIImage(systemName: "star.fill")
     }
 
@@ -73,7 +83,7 @@ final class FavoriteView: UIView {
             with: self,
             duration: 0.3,
             animations: {[self] in
-                favoriteImageView.alpha = isSelected ? 0.8 : 0.5
+                favoriteImageView.tintColor = isSelected ? R.color.starBackgroundYellow() : R.color.starBackgroundGray()
             }
         )
     }
