@@ -14,7 +14,7 @@ final class SearchViewController: UIViewController {
     // MARK: - Private properties
     
     private lazy var mainView = {
-        let view = UIView()
+        let view = SearchView()
         return view
     }()
     
@@ -32,7 +32,6 @@ final class SearchViewController: UIViewController {
     
     override func loadView() {
         view = mainView
-//        view.backgroundColor = .systemGray
     }
     
     // MARK: - Public methods

@@ -1,26 +1,19 @@
 //
-//  CharacterInfoView.swift
+//  SearchFrameView.swift
 //  RickAndMorty
 //
-//  Created by Алексей Олудин on 11.01.2025.
+//  Created by Алексей Олудин on 12.01.2025.
 //
 
 import UIKit
 
-final class CharacterInfoView: UIView {
+final class SearchFrameView: UIView {
     
     // MARK: - Public properties
     
     // MARK: - Private properties
     
-    private let infoLabel: UILabel = {
-        let label = UILabel()
-        label.toAutoLayout()
-        label.font = R.font.inter28ptRegular(size: 36)
-        label.textAlignment = .center
-        label.text = "ℹ️️"
-        return label
-    }()
+    private lazy var searchDropdownMenuView = SearchDropdownMenuView()
     
     // MARK: - Initializers
     
@@ -46,7 +39,8 @@ final class CharacterInfoView: UIView {
     // MARK: - Private methods
     
     private func setupUI() {
-        backgroundColor = R.color.light()
+        backgroundColor = R.color.dark()
+        
         roundCorners(
             corners: [
                 .layerMaxXMaxYCorner,
@@ -54,23 +48,24 @@ final class CharacterInfoView: UIView {
                 .layerMinXMaxYCorner,
                 .layerMinXMinYCorner
             ],
-            radius: 31
+            radius: 42
         )
-        toAutoLayout()
+        
         addSubviews()
         setupLayout()
     }
     
     private func addSubviews() {
-        [ infoLabel ] .forEach { addSubview($0) }
+        [ searchDropdownMenuView ] .forEach { addSubview($0) }
     }
     
     private func setupLayout() {
+        toAutoLayout()
         NSLayoutConstraint.activate([
-            infoLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            infoLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            infoLabel.widthAnchor.constraint(equalToConstant: 40),
-            infoLabel.heightAnchor.constraint(equalToConstant: 45)
+            searchDropdownMenuView.topAnchor.constraint(equalTo: topAnchor, constant: 46),
+            searchDropdownMenuView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            searchDropdownMenuView.heightAnchor.constraint(equalToConstant: 57),
+            searchDropdownMenuView.widthAnchor.constraint(equalToConstant: 300)
         ])
     }
 }

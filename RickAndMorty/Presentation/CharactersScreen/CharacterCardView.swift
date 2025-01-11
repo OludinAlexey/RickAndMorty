@@ -45,7 +45,23 @@ final class CharacterCardView: UIView {
     }()
     
     private lazy var favoriteView: FavoriteView = FavoriteView()
-    private lazy var characterInfoView: CharacterInfoView = CharacterInfoView()
+    private lazy var characterInfoView: InfoView = InfoView()
+    
+    private lazy var prevCharacterButton: UIButton = {
+        let button = UIButton()
+        button.toAutoLayout()
+        button.setImage(R.image.arrowLeftWhite(), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        return button
+    }()
+    
+    private lazy var nextCharacterButton: UIButton = {
+        let button = UIButton()
+        button.toAutoLayout()
+        button.setImage(R.image.arrowRightWhite(), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        return button
+    }()
     
     // MARK: - Initializers
     
@@ -73,6 +89,16 @@ final class CharacterCardView: UIView {
     private func setupUI() {
         backgroundColor = R.color.dark()
         
+        roundCorners(
+            corners: [
+                .layerMaxXMaxYCorner,
+                .layerMaxXMinYCorner,
+                .layerMinXMaxYCorner,
+                .layerMinXMinYCorner
+            ],
+            radius: 42
+        )
+        
         addSubviews()
         setupLayout()
     }
@@ -85,7 +111,8 @@ final class CharacterCardView: UIView {
             createdTitleLabel, createdLabel,
             characterImageView,
             favoriteView,
-            characterInfoView
+            characterInfoView,
+            prevCharacterButton, nextCharacterButton
         ] .forEach { addSubview($0) }
     }
     
@@ -132,6 +159,20 @@ final class CharacterCardView: UIView {
             characterInfoView.trailingAnchor.constraint(equalTo: characterImageView.trailingAnchor),
             characterInfoView.widthAnchor.constraint(equalToConstant: 63),
             characterInfoView.heightAnchor.constraint(equalToConstant: 61)
+        ])
+        
+        NSLayoutConstraint.activate([
+            prevCharacterButton.topAnchor.constraint(equalTo: characterImageView.bottomAnchor, constant: 18),
+            prevCharacterButton.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -69),
+            prevCharacterButton.widthAnchor.constraint(equalToConstant: 35),
+            prevCharacterButton.heightAnchor.constraint(equalToConstant: 66)
+        ])
+        
+        NSLayoutConstraint.activate([
+            nextCharacterButton.topAnchor.constraint(equalTo: characterImageView.bottomAnchor, constant: 18),
+            nextCharacterButton.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 69),
+            nextCharacterButton.widthAnchor.constraint(equalToConstant: 35),
+            nextCharacterButton.heightAnchor.constraint(equalToConstant: 66)
         ])
     }
     
