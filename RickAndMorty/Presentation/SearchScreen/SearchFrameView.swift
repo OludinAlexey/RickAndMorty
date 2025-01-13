@@ -14,6 +14,25 @@ final class SearchFrameView: UIView {
     // MARK: - Private properties
     
     private lazy var searchDropdownMenuView = SearchDropdownMenuView()
+    private lazy var searchedCharactersView = SearchedCharactersView()
+    
+//    private lazy var characterImageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.image = R.image.morty()
+//        roundCorners(
+//            corners: [
+//                .layerMaxXMaxYCorner,
+//                .layerMaxXMinYCorner,
+//                .layerMinXMaxYCorner,
+//                .layerMinXMinYCorner
+//            ],
+//            radius: 21
+//        )
+//        imageView.toAutoLayout()
+//        
+//        
+//        return imageView
+//    }()
     
     // MARK: - Initializers
     
@@ -56,7 +75,7 @@ final class SearchFrameView: UIView {
     }
     
     private func addSubviews() {
-        [ searchDropdownMenuView ] .forEach { addSubview($0) }
+        [ searchDropdownMenuView, searchedCharactersView ] .forEach { addSubview($0) }
     }
     
     private func setupLayout() {
@@ -67,5 +86,14 @@ final class SearchFrameView: UIView {
             searchDropdownMenuView.heightAnchor.constraint(equalToConstant: 57),
             searchDropdownMenuView.widthAnchor.constraint(equalToConstant: 300)
         ])
+        
+        NSLayoutConstraint.activate([
+            searchedCharactersView.topAnchor.constraint(equalTo: searchDropdownMenuView.bottomAnchor, constant: 42),
+            searchedCharactersView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            searchedCharactersView.heightAnchor.constraint(equalToConstant: 380),
+            searchedCharactersView.widthAnchor.constraint(equalToConstant: 300)
+        ])
+        
+        
     }
 }

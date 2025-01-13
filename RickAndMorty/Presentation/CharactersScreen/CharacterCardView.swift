@@ -148,8 +148,8 @@ final class CharacterCardView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            favoriteView.topAnchor.constraint(equalTo: characterImageView.topAnchor, constant: 16),
-            favoriteView.leadingAnchor.constraint(equalTo: characterImageView.leadingAnchor, constant: 16),
+            favoriteView.topAnchor.constraint(equalTo: characterImageView.topAnchor, constant: 10),
+            favoriteView.leadingAnchor.constraint(equalTo: characterImageView.leadingAnchor, constant: 10),
             favoriteView.widthAnchor.constraint(equalToConstant: 61),
             favoriteView.heightAnchor.constraint(equalToConstant: 54)
         ])

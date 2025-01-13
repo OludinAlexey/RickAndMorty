@@ -70,7 +70,7 @@ final class SearchView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            searchFrameView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 33),
+            searchFrameView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 42),
             searchFrameView.centerXAnchor.constraint(equalTo: centerXAnchor),
             searchFrameView.heightAnchor.constraint(equalToConstant: 634),
             searchFrameView.widthAnchor.constraint(equalToConstant: 347)
