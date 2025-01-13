@@ -16,15 +16,15 @@ final class CharacterCardView: UIView {
     private let titleFont: UIFont = R.font.inter28ptBold(size: 15)!
     private let valueFont: UIFont = R.font.inter28ptRegular(size: 15)!
     
-    private lazy var planetTitleLabel: UILabel = getLabel("Planet:", font: titleFont)
-    private lazy var nameTitleLabel: UILabel = getLabel("Name:", font: titleFont)
-    private lazy var statusTitleLabel: UILabel = getLabel("Status:", font: titleFont)
-    private lazy var createdTitleLabel: UILabel = getLabel("Created:", font: titleFont)
+    private lazy var planetTitleLabel: UILabel = UILabel.getLabel("Planet:", font: titleFont)
+    private lazy var nameTitleLabel: UILabel = UILabel.getLabel("Name:", font: titleFont)
+    private lazy var statusTitleLabel: UILabel = UILabel.getLabel("Status:", font: titleFont)
+    private lazy var createdTitleLabel: UILabel = UILabel.getLabel("Created:", font: titleFont)
     
-    private lazy var planetLabel: UILabel = getLabel("Earth", font: valueFont)
-    private lazy var nameLabel: UILabel = getLabel("Morty Smith", font: valueFont)
-    private lazy var statusLabel: UILabel = getLabel("Alive", font: valueFont)
-    private lazy var createdLabel: UILabel = getLabel("2017-11-04T18:48:46.250Z", font: valueFont)
+    private lazy var planetLabel: UILabel = UILabel.getLabel("Earth", font: valueFont)
+    private lazy var nameLabel: UILabel = UILabel.getLabel("Morty Smith", font: valueFont)
+    private lazy var statusLabel: UILabel = UILabel.getLabel("Alive", font: valueFont)
+    private lazy var createdLabel: UILabel = UILabel.getLabel("2017-11-04T18:48:46.250Z", font: valueFont)
     
     private lazy var characterImageView: UIImageView = {
         let imageView = UIImageView()
@@ -175,34 +175,5 @@ final class CharacterCardView: UIView {
             nextCharacterButton.heightAnchor.constraint(equalToConstant: 66)
         ])
     }
-    
-    private func getTitleLabel(_ text: String) -> UILabel {
-        let label = UILabel()
-        label.toAutoLayout()
-        label.font = R.font.inter28ptBold(size: 15)
-        label.textColor = R.color.light()
-        label.textAlignment = .left
-        label.text = text
-        return label
-    }
-    
-    private func getValueLabel(_ text: String) -> UILabel {
-        let label = UILabel()
-        label.toAutoLayout()
-        label.font = R.font.inter28ptRegular(size: 15)
-        label.textColor = R.color.light()
-        label.textAlignment = .left
-        label.text = text
-        return label
-    }
-    
-    private func getLabel(_ text: String, font: UIFont) -> UILabel {
-        let label = UILabel()
-        label.toAutoLayout()
-        label.font = font
-        label.textColor = R.color.light()
-        label.textAlignment = .left
-        label.text = text
-        return label
-    }
+
 }
