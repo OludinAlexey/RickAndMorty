@@ -27,4 +27,17 @@ extension UILabel {
         label.text = text
         return label
     }
+    
+    static func getTitleLabel(_ text: String) -> UILabel {
+        let label = UILabel()
+        label.toAutoLayout()
+        label.font = R.font.inter28ptRegular(size: 24)
+        label.textColor = R.color.primaryText()
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.2
+        label.text = text
+        return label
+    }
 }

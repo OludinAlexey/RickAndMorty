@@ -14,7 +14,7 @@ final class FavoritesViewController: UIViewController {
     // MARK: - Private properties
     
     private lazy var mainView = {
-        let view = UIView()
+        let view = FavoritesView()
         return view
     }()
     
