@@ -17,5 +17,6 @@ extension CGFloat {
     }
     
     private var screenSize: CGSize { UIScreen.main.bounds.size }
-    private var designSize: CGSize { CGSize(width: 375, height: 812) }
+//    private var designSize: CGSize { CGSize(width: 375, height: 812) }
+    private var designSize: CGSize { CGSize(width: 393, height: 852) }
 }

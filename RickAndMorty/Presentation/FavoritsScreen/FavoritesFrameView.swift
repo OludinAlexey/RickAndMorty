@@ -50,7 +50,6 @@ final class FavoritesFrameView: UIView {
             ],
             radius: 42
         )
-        
         addSubviews()
         setupLayout()
     }
@@ -63,10 +62,10 @@ final class FavoritesFrameView: UIView {
         toAutoLayout()
         
         NSLayoutConstraint.activate([
-            favoriteCharacterView.topAnchor.constraint(equalTo: topAnchor, constant: 23),
+            favoriteCharacterView.topAnchor.constraint(equalTo: topAnchor, constant: 23.fitH),
             favoriteCharacterView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            favoriteCharacterView.widthAnchor.constraint(equalToConstant: 300),
-            favoriteCharacterView.heightAnchor.constraint(equalToConstant: 300)
+            favoriteCharacterView.widthAnchor.constraint(equalToConstant: 300.fitW),
+            favoriteCharacterView.heightAnchor.constraint(equalToConstant: 282)
         ])
         
     }

@@ -15,24 +15,7 @@ final class SearchFrameView: UIView {
     
     private lazy var searchDropdownMenuView = SearchDropdownMenuView()
     private lazy var searchedCharactersView = SearchedCharactersView()
-    
-//    private lazy var characterImageView: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.image = R.image.morty()
-//        roundCorners(
-//            corners: [
-//                .layerMaxXMaxYCorner,
-//                .layerMaxXMinYCorner,
-//                .layerMinXMaxYCorner,
-//                .layerMinXMinYCorner
-//            ],
-//            radius: 21
-//        )
-//        imageView.toAutoLayout()
-//        
-//        
-//        return imageView
-//    }()
+    private lazy var nextPrevButtonsView = NextPrevButtonsView(nextButtonImage: R.image.arrowRightGreen()!, prevButtonImage: R.image.arrowLeftGreen()!)
     
     // MARK: - Initializers
     
@@ -75,25 +58,34 @@ final class SearchFrameView: UIView {
     }
     
     private func addSubviews() {
-        [ searchDropdownMenuView, searchedCharactersView ] .forEach { addSubview($0) }
+        [ searchDropdownMenuView,
+          searchedCharactersView,
+          nextPrevButtonsView
+        ] .forEach { addSubview($0) }
     }
     
     private func setupLayout() {
         toAutoLayout()
         NSLayoutConstraint.activate([
-            searchDropdownMenuView.topAnchor.constraint(equalTo: topAnchor, constant: 46),
+            searchDropdownMenuView.topAnchor.constraint(equalTo: topAnchor, constant: 45.fitH),
             searchDropdownMenuView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            searchDropdownMenuView.heightAnchor.constraint(equalToConstant: 57),
-            searchDropdownMenuView.widthAnchor.constraint(equalToConstant: 300)
+            searchDropdownMenuView.heightAnchor.constraint(equalToConstant: 57.fitH),
+            searchDropdownMenuView.widthAnchor.constraint(equalToConstant: 300.fitW)
         ])
         
         NSLayoutConstraint.activate([
-            searchedCharactersView.topAnchor.constraint(equalTo: searchDropdownMenuView.bottomAnchor, constant: 42),
+            searchedCharactersView.topAnchor.constraint(equalTo: searchDropdownMenuView.bottomAnchor, constant: 42.fitH),
             searchedCharactersView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            searchedCharactersView.heightAnchor.constraint(equalToConstant: 380),
-            searchedCharactersView.widthAnchor.constraint(equalToConstant: 300)
+            searchedCharactersView.heightAnchor.constraint(equalToConstant: 380.fitH),
+            searchedCharactersView.widthAnchor.constraint(equalToConstant: 300.fitW)
         ])
         
+        NSLayoutConstraint.activate([
+            nextPrevButtonsView.topAnchor.constraint(equalTo: searchedCharactersView.bottomAnchor),
+            nextPrevButtonsView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            nextPrevButtonsView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            nextPrevButtonsView.widthAnchor.constraint(equalToConstant: 208.fitW)
+        ])
         
     }
 }

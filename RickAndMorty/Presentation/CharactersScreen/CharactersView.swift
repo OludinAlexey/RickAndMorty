@@ -63,17 +63,17 @@ final class CharactersView: UIView {
     private func setupLayout() {
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 22.fitH),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 50),
-            titleLabel.widthAnchor.constraint(equalToConstant: 220)
+            titleLabel.heightAnchor.constraint(equalToConstant: 50.fitH),
+            titleLabel.widthAnchor.constraint(equalToConstant: 220.fitW)
         ])
         
         NSLayoutConstraint.activate([
-            characterCardView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 33),
+            characterCardView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 27.fitH),
             characterCardView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            characterCardView.heightAnchor.constraint(equalToConstant: 644),
-            characterCardView.widthAnchor.constraint(equalToConstant: 347)
+            characterCardView.heightAnchor.constraint(equalToConstant: 646.fitH),
+            characterCardView.widthAnchor.constraint(equalToConstant: 347.fitW)
         ])
     }
 }

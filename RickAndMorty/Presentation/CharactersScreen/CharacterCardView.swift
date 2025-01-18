@@ -47,21 +47,8 @@ final class CharacterCardView: UIView {
     private lazy var favoriteView: FavoriteView = FavoriteView()
     private lazy var characterInfoView: InfoView = InfoView()
     
-    private lazy var prevCharacterButton: UIButton = {
-        let button = UIButton()
-        button.toAutoLayout()
-        button.setImage(R.image.arrowLeftWhite(), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        return button
-    }()
+    private lazy var nextPrevButtonsView = NextPrevButtonsView(nextButtonImage: R.image.arrowRightWhite ()!, prevButtonImage: R.image.arrowLeftWhite()!)
     
-    private lazy var nextCharacterButton: UIButton = {
-        let button = UIButton()
-        button.toAutoLayout()
-        button.setImage(R.image.arrowRightWhite(), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        return button
-    }()
     
     // MARK: - Initializers
     
@@ -112,39 +99,39 @@ final class CharacterCardView: UIView {
             characterImageView,
             favoriteView,
             characterInfoView,
-            prevCharacterButton, nextCharacterButton
+            nextPrevButtonsView
         ] .forEach { addSubview($0) }
     }
     
     private func setupLayout() {
         toAutoLayout()
         NSLayoutConstraint.activate([
-            planetTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 17),
-            planetTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 39),
+            planetTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 19.fitH),
+            planetTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 39.fitW),
             planetLabel.topAnchor.constraint(equalTo: planetTitleLabel.topAnchor),
-            planetLabel.leadingAnchor.constraint(equalTo: planetTitleLabel.trailingAnchor, constant: 8),
+            planetLabel.leadingAnchor.constraint(equalTo: planetTitleLabel.trailingAnchor, constant: 8.fitW),
             
-            nameTitleLabel.topAnchor.constraint(equalTo: planetTitleLabel.bottomAnchor, constant: 15),
+            nameTitleLabel.topAnchor.constraint(equalTo: planetTitleLabel.bottomAnchor, constant: 14.fitH),
             nameTitleLabel.leadingAnchor.constraint(equalTo: planetTitleLabel.leadingAnchor),
             nameLabel.topAnchor.constraint(equalTo: nameTitleLabel.topAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: nameTitleLabel.trailingAnchor, constant: 8),
+            nameLabel.leadingAnchor.constraint(equalTo: nameTitleLabel.trailingAnchor, constant: 8.fitW),
             
-            statusTitleLabel.topAnchor.constraint(equalTo: nameTitleLabel.bottomAnchor, constant: 14),
+            statusTitleLabel.topAnchor.constraint(equalTo: nameTitleLabel.bottomAnchor, constant: 15.fitH),
             statusTitleLabel.leadingAnchor.constraint(equalTo: planetTitleLabel.leadingAnchor),
             statusLabel.topAnchor.constraint(equalTo: statusTitleLabel.topAnchor),
-            statusLabel.leadingAnchor.constraint(equalTo: statusTitleLabel.trailingAnchor, constant: 8),
+            statusLabel.leadingAnchor.constraint(equalTo: statusTitleLabel.trailingAnchor, constant: 8.fitW),
             
-            createdTitleLabel.topAnchor.constraint(equalTo: statusTitleLabel.bottomAnchor, constant: 14),
+            createdTitleLabel.topAnchor.constraint(equalTo: statusTitleLabel.bottomAnchor, constant: 14.fitH),
             createdTitleLabel.leadingAnchor.constraint(equalTo: planetTitleLabel.leadingAnchor),
             createdLabel.topAnchor.constraint(equalTo: createdTitleLabel.topAnchor),
-            createdLabel.leadingAnchor.constraint(equalTo: createdTitleLabel.trailingAnchor, constant: 8)
+            createdLabel.leadingAnchor.constraint(equalTo: createdTitleLabel.trailingAnchor, constant: 8.fitW)
         ])
         
         NSLayoutConstraint.activate([
-            characterImageView.topAnchor.constraint(equalTo: createdTitleLabel.bottomAnchor,constant: 16),
-            characterImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            characterImageView.widthAnchor.constraint(equalToConstant: 300),
-            characterImageView.heightAnchor.constraint(equalToConstant: 375),
+            characterImageView.topAnchor.constraint(equalTo: createdTitleLabel.bottomAnchor,constant: 19.fitH),
+            characterImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            characterImageView.widthAnchor.constraint(equalToConstant: 300.fitW),
+            characterImageView.heightAnchor.constraint(equalToConstant: 375.fitH),
         ])
         
         NSLayoutConstraint.activate([
@@ -162,17 +149,10 @@ final class CharacterCardView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            prevCharacterButton.topAnchor.constraint(equalTo: characterImageView.bottomAnchor, constant: 18),
-            prevCharacterButton.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -69),
-            prevCharacterButton.widthAnchor.constraint(equalToConstant: 35),
-            prevCharacterButton.heightAnchor.constraint(equalToConstant: 66)
-        ])
-        
-        NSLayoutConstraint.activate([
-            nextCharacterButton.topAnchor.constraint(equalTo: characterImageView.bottomAnchor, constant: 18),
-            nextCharacterButton.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 69),
-            nextCharacterButton.widthAnchor.constraint(equalToConstant: 35),
-            nextCharacterButton.heightAnchor.constraint(equalToConstant: 66)
+            nextPrevButtonsView.topAnchor.constraint(equalTo: characterImageView.bottomAnchor),
+            nextPrevButtonsView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            nextPrevButtonsView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            nextPrevButtonsView.widthAnchor.constraint(equalToConstant: 208.fitW)
         ])
     }
 

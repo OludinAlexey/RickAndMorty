@@ -18,6 +18,7 @@ final class FavoriteCharacterView: UIView {
         imageView.image = R.image.morty()
         imageView.toAutoLayout()
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
         imageView.roundCorners(
             corners: [
                 .layerMaxXMaxYCorner,
@@ -61,6 +62,7 @@ final class FavoriteCharacterView: UIView {
     
     private func setupUI() {
         backgroundColor = .green
+        clipsToBounds = true
         
         roundCorners(
             corners: [
@@ -96,7 +98,7 @@ final class FavoriteCharacterView: UIView {
             favoritesLabelsView.bottomAnchor.constraint(equalTo: bottomAnchor),
             favoritesLabelsView.leadingAnchor.constraint(equalTo: leadingAnchor),
             favoritesLabelsView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            favoritesLabelsView.heightAnchor.constraint(equalToConstant: 67)
+            favoritesLabelsView.heightAnchor.constraint(equalToConstant: 67.fitH)
         ])
         
         NSLayoutConstraint.activate([
@@ -112,6 +114,5 @@ final class FavoriteCharacterView: UIView {
             characterInfoView.widthAnchor.constraint(equalToConstant: 63),
             characterInfoView.heightAnchor.constraint(equalToConstant: 61)
         ])
-        
     }
 }

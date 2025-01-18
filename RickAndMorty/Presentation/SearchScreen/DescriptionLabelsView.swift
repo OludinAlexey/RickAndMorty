@@ -58,30 +58,30 @@ final class DescriptionLabelsView: UIView {
     private func setupLayout() {
         toAutoLayout()
         NSLayoutConstraint.activate([
-            planetTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14),
-            planetTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14),
-            planetTitleLabel.heightAnchor.constraint(equalToConstant: 25),
-            planetTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 14)
+            planetTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14.fitW),
+            planetTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14.fitW),
+            planetTitleLabel.heightAnchor.constraint(equalToConstant: 25.fitH),
+            planetTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 18.fitH)
         ])
         
         NSLayoutConstraint.activate([
-            planetLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14),
-            planetLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14),
-            planetLabel.heightAnchor.constraint(equalToConstant: 20),
+            planetLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14.fitW),
+            planetLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14.fitW),
+            planetLabel.heightAnchor.constraint(equalToConstant: 25.fitH),
             planetLabel.topAnchor.constraint(equalTo: planetTitleLabel.bottomAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            nameTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14),
-            nameTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14),
-            nameTitleLabel.heightAnchor.constraint(equalToConstant: 25),
-            nameTitleLabel.topAnchor.constraint(equalTo: planetLabel.bottomAnchor, constant: 14)
+            nameTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.fitW),
+            nameTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14.fitW),
+            nameTitleLabel.heightAnchor.constraint(equalToConstant: 25.fitH),
+            nameTitleLabel.topAnchor.constraint(equalTo: planetLabel.bottomAnchor, constant: 10.fitH)
         ])
         
         NSLayoutConstraint.activate([
-            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14),
-            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14),
-            nameLabel.heightAnchor.constraint(equalToConstant: 20),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14.fitW),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14.fitW),
+            nameLabel.heightAnchor.constraint(equalToConstant: 25.fitH),
             nameLabel.topAnchor.constraint(equalTo: nameTitleLabel.bottomAnchor)
         ])
     }

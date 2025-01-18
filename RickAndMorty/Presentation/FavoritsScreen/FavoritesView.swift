@@ -51,17 +51,17 @@ final class FavoritesView: UIView {
     private func setupLayout() {
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 22.fitH),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 50),
-            titleLabel.widthAnchor.constraint(equalToConstant: 220)
+            titleLabel.heightAnchor.constraint(equalToConstant: 50.fitH),
+            titleLabel.widthAnchor.constraint(equalToConstant: 220.fitW)
         ])
         
         NSLayoutConstraint.activate([
-            favoritesFrameView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 33),
+            favoritesFrameView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 54.fitH),
             favoritesFrameView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            favoritesFrameView.heightAnchor.constraint(equalToConstant: 616),
-            favoritesFrameView.widthAnchor.constraint(equalToConstant: 347)
+            favoritesFrameView.heightAnchor.constraint(equalToConstant: 618.fitH),
+            favoritesFrameView.widthAnchor.constraint(equalToConstant: 347.fitW)
         ])
     }
 }

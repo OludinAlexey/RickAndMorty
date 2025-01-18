@@ -52,16 +52,16 @@ final class FavoritesLabelsView: UIView {
         toAutoLayout()
         
         NSLayoutConstraint.activate([
-            nameTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14),
-            nameTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14),
-            nameTitleLabel.heightAnchor.constraint(equalToConstant: 25),
-            nameTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 7)
+            nameTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14.fitW),
+            nameTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14.fitW),
+            nameTitleLabel.heightAnchor.constraint(equalToConstant: 30.fitH),
+            nameTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 7.fitH)
         ])
         
         NSLayoutConstraint.activate([
-            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14),
-            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14),
-            nameLabel.heightAnchor.constraint(equalToConstant: 20),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14.fitW),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14.fitW),
+            nameLabel.heightAnchor.constraint(equalToConstant: 30.fitH),
             nameLabel.topAnchor.constraint(equalTo: nameTitleLabel.bottomAnchor)
         ])
     }

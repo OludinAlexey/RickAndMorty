@@ -18,6 +18,7 @@ final class SearchedCharactersView: UIView {
         imageView.image = R.image.morty()
         imageView.toAutoLayout()
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
         imageView.roundCorners(
             corners: [
                 .layerMaxXMaxYCorner,
@@ -35,22 +36,6 @@ final class SearchedCharactersView: UIView {
     
     private lazy var favoriteView: FavoriteView = FavoriteView()
     private lazy var characterInfoView: InfoView = InfoView()
-    
-    private lazy var prevCharacterButton: UIButton = {
-        let button = UIButton()
-        button.toAutoLayout()
-        button.setImage(R.image.arrowLeftGreen(), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        return button
-    }()
-    
-    private lazy var nextCharacterButton: UIButton = {
-        let button = UIButton()
-        button.toAutoLayout()
-        button.setImage(R.image.arrowRightGreen(), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        return button
-    }()
     
     // MARK: - Initializers
     
@@ -77,6 +62,7 @@ final class SearchedCharactersView: UIView {
     
     private func setupUI() {
         backgroundColor = .green
+        clipsToBounds = true
         
         roundCorners(
             corners: [
@@ -95,9 +81,7 @@ final class SearchedCharactersView: UIView {
             characterImageView,
             descriptionLabelsView,
             favoriteView,
-            characterInfoView,
-            prevCharacterButton,
-            nextCharacterButton
+            characterInfoView
         ] .forEach { addSubview($0) }
     }
     
@@ -114,7 +98,7 @@ final class SearchedCharactersView: UIView {
             descriptionLabelsView.bottomAnchor.constraint(equalTo: bottomAnchor),
             descriptionLabelsView.leadingAnchor.constraint(equalTo: leadingAnchor),
             descriptionLabelsView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            descriptionLabelsView.heightAnchor.constraint(equalToConstant: 150)
+            descriptionLabelsView.heightAnchor.constraint(equalToConstant: 150.fitH)
         ])
         
         NSLayoutConstraint.activate([
@@ -130,19 +114,6 @@ final class SearchedCharactersView: UIView {
             characterInfoView.widthAnchor.constraint(equalToConstant: 63),
             characterInfoView.heightAnchor.constraint(equalToConstant: 61)
         ])
-        
-        NSLayoutConstraint.activate([
-            prevCharacterButton.topAnchor.constraint(equalTo: descriptionLabelsView.bottomAnchor, constant: 18),
-            prevCharacterButton.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -69),
-            prevCharacterButton.widthAnchor.constraint(equalToConstant: 35),
-            prevCharacterButton.heightAnchor.constraint(equalToConstant: 66)
-        ])
-        
-        NSLayoutConstraint.activate([
-            nextCharacterButton.topAnchor.constraint(equalTo: descriptionLabelsView.bottomAnchor, constant: 18),
-            nextCharacterButton.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 69),
-            nextCharacterButton.widthAnchor.constraint(equalToConstant: 35),
-            nextCharacterButton.heightAnchor.constraint(equalToConstant: 66)
-        ])
+
     }
 }

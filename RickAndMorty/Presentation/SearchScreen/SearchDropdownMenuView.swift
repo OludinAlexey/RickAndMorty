@@ -104,24 +104,24 @@ final class SearchDropdownMenuView: UIView {
         
         
         NSLayoutConstraint.activate([
-            titleLabel.heightAnchor.constraint(equalToConstant: 46),
-            titleLabel.widthAnchor.constraint(equalToConstant: 166),
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 10),
+            titleLabel.heightAnchor.constraint(equalToConstant: 46.fitH),
+            titleLabel.widthAnchor.constraint(equalToConstant: 166.fitW),
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 10.fitW),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            planetIcon.heightAnchor.constraint(equalToConstant: 49),
-            planetIcon.widthAnchor.constraint(equalToConstant: 50),
-            planetIcon.trailingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -16),
+            planetIcon.heightAnchor.constraint(equalToConstant: 49.fitH),
+            planetIcon.widthAnchor.constraint(equalToConstant: 50.fitW),
+            planetIcon.trailingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -16.fitW),
             planetIcon.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            arrowIcon.heightAnchor.constraint(equalToConstant: 16),
-            arrowIcon.widthAnchor.constraint(equalToConstant: 29),
+            arrowIcon.heightAnchor.constraint(equalToConstant: 16.fitH),
+            arrowIcon.widthAnchor.constraint(equalToConstant: 29.fitW),
             arrowIcon.centerYAnchor.constraint(equalTo: centerYAnchor),
-            arrowIcon.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 16)
+            arrowIcon.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 16.fitW)
         ])
     }
 }
