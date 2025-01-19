@@ -35,7 +35,7 @@ final class FavoriteView: UIView {
     
     func configure(isFavorite: Bool){
         isSelected = isFavorite
-        favoriteImageView.tintColor = isSelected ? R.color.starBackgroundYellow() : R.color.starBackgroundGray()
+        favoriteImageView.image = isSelected ? R.image.starFilled() : R.image.star()
     }
     
     override func layoutSubviews() {
@@ -64,17 +64,12 @@ final class FavoriteView: UIView {
         )
         toAutoLayout()
         addSubviews()
-        setupFavoriteImageView()
+        configure(isFavorite: isSelected)
     }
     
     private func addSubviews(){
         addSubview(favoriteImageView)
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapView)))
-    }
-    
-    private func setupFavoriteImageView(){
-        favoriteImageView.tintColor = .yellow
-        favoriteImageView.image = UIImage(systemName: "star.fill")
     }
 
     private func animateTap(){
@@ -83,7 +78,7 @@ final class FavoriteView: UIView {
             with: self,
             duration: 0.3,
             animations: {[self] in
-                favoriteImageView.tintColor = isSelected ? R.color.starBackgroundYellow() : R.color.starBackgroundGray()
+                configure(isFavorite: isSelected)
             }
         )
     }
