@@ -14,7 +14,7 @@ final class FavoritesViewController: UIViewController {
     // MARK: - Private properties
     
     private lazy var mainView = {
-        let view = FavoritesView()
+        let view = FavoritesView(infoViewDelegate: self)
         return view
     }()
     
@@ -32,7 +32,6 @@ final class FavoritesViewController: UIViewController {
     
     override func loadView() {
         view = mainView
-//        view.backgroundColor = .systemGreen
     }
     
     // MARK: - Public methods
@@ -41,4 +40,13 @@ final class FavoritesViewController: UIViewController {
     
     // MARK: - Private methods
     
+    private func showInfoView() {
+        navigationController?.pushViewController(DetailsViewController(), animated: true)
+    }
+}
+
+extension FavoritesViewController: InfoViewDelegate {
+    func infoViewDidTap() {
+        showInfoView()
+    }
 }

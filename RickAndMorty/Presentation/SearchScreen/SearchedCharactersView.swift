@@ -32,14 +32,17 @@ final class SearchedCharactersView: UIView {
         return imageView
     }()
     
+    private let infoViewDelegate: InfoViewDelegate
+    
     private lazy var descriptionLabelsView = DescriptionLabelsView()
     
     private lazy var favoriteView: FavoriteView = FavoriteView()
-    private lazy var characterInfoView: InfoView = InfoView()
+    private lazy var characterInfoView: InfoView = InfoView(delegate: infoViewDelegate)
     
     // MARK: - Initializers
     
-    init() {
+    init(infoViewDelegate: InfoViewDelegate) {
+        self.infoViewDelegate = infoViewDelegate
         super.init(frame: .zero)
         setupUI()
     }

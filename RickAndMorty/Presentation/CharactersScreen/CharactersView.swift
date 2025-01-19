@@ -26,11 +26,13 @@ final class CharactersView: UIView {
         return label
     }()
     
-    private lazy var characterCardView = CharacterCardView()
+    private let infoViewDelegate: InfoViewDelegate
+    private lazy var characterCardView = CharacterCardView(infoViewDelegate: infoViewDelegate)
     
     // MARK: - Initializers
     
-    init() {
+    init(infoViewDelegate: InfoViewDelegate) {
+        self.infoViewDelegate = infoViewDelegate
         super.init(frame: .zero)
         setupUI()
     }

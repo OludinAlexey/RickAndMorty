@@ -1,20 +1,20 @@
 //
-//  SearchViewController.swift
+//  DetailsViewController.swift
 //  RickAndMorty
 //
-//  Created by Алексей Олудин on 01.01.2025.
+//  Created by Алексей Олудин on 19.01.2025.
 //
 
 import UIKit
 
-final class SearchViewController: UIViewController {
+final class DetailsViewController: UIViewController {
     
     // MARK: - Public properties
     
     // MARK: - Private properties
     
     private lazy var mainView = {
-        let view = SearchView(infoViewDelegate: self)
+        let view = UIView()
         return view
     }()
     
@@ -40,14 +40,5 @@ final class SearchViewController: UIViewController {
     
     // MARK: - Private methods
     
-    private func showInfoView() {
-        navigationController?.pushViewController(DetailsViewController(), animated: true)
-    }
     
-}
-
-extension SearchViewController: InfoViewDelegate {
-    func infoViewDidTap() {
-        showInfoView()
-    }
 }

@@ -26,11 +26,14 @@ final class SearchView: UIView {
         return label
     }()
     
-    private lazy var searchFrameView = SearchFrameView()
+    
+    private let infoViewDelegate: InfoViewDelegate
+    private lazy var searchFrameView = SearchFrameView(infoViewDelegate: infoViewDelegate)
     
     // MARK: - Initializers
     
-    init() {
+    init(infoViewDelegate: InfoViewDelegate) {
+        self.infoViewDelegate = infoViewDelegate
         super.init(frame: .zero)
         setupUI()
     }

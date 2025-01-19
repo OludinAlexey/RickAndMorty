@@ -14,7 +14,7 @@ final class CharactersViewController: UIViewController {
     // MARK: - Private properties
     
     private lazy var mainView = {
-        let view = CharactersView()
+        let view = CharactersView(infoViewDelegate: self)
         return view
     }()
     
@@ -41,4 +41,13 @@ final class CharactersViewController: UIViewController {
     
     // MARK: - Private methods
     
+    private func showInfoView() {
+        navigationController?.pushViewController(DetailsViewController(), animated: true)
+    }
+}
+
+extension CharactersViewController: InfoViewDelegate {
+    func infoViewDidTap() {
+        showInfoView()
+    }
 }

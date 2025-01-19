@@ -13,12 +13,14 @@ final class FavoritesView: UIView {
     
     // MARK: - Private properties
     
+    private let infoViewDelegate: InfoViewDelegate
     private lazy var titleLabel = UILabel.getTitleLabel("Favorites")
-    private lazy var favoritesFrameView = FavoritesFrameView()
+    private lazy var favoritesFrameView = FavoritesFrameView(infoViewDelegate: infoViewDelegate)
     
     // MARK: - Initializers
     
-    init() {
+    init(infoViewDelegate: InfoViewDelegate) {
+        self.infoViewDelegate = infoViewDelegate
         super.init(frame: .zero)
         setupUI()
     }

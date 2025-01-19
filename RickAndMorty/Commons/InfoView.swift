@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class InfoView: UIView {
+protocol InfoViewDelegate: AnyObject {
+    func infoViewDidTap()
+}
+
+final class InfoView: UIButton {
     
     // MARK: - Public properties
     
@@ -22,10 +26,14 @@ final class InfoView: UIView {
         return label
     }()
     
+    private let delegate: InfoViewDelegate
+    
     // MARK: - Initializers
     
-    init() {
+    init(delegate: InfoViewDelegate) {
+        self.delegate = delegate
         super.init(frame: .zero)
+        addTarget(self, action: #selector(showInfo), for: .touchUpInside)
         setupUI()
     }
     
@@ -39,8 +47,9 @@ final class InfoView: UIView {
     
     // MARK: - Actions
     
-    @objc private func someAction() {
-        
+    @objc private func showInfo() {
+        print(#function)
+        delegate.infoViewDidTap()
     }
     
     // MARK: - Private methods

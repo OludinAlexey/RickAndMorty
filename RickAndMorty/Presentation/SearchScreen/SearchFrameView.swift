@@ -14,12 +14,14 @@ final class SearchFrameView: UIView {
     // MARK: - Private properties
     
     private lazy var searchDropdownMenuView = SearchDropdownMenuView()
-    private lazy var searchedCharactersView = SearchedCharactersView()
+    private lazy var searchedCharactersView = SearchedCharactersView(infoViewDelegate: infoViewDelegate)
     private lazy var nextPrevButtonsView = NextPrevButtonsView(nextButtonImage: R.image.arrowRightGreen()!, prevButtonImage: R.image.arrowLeftGreen()!)
+    private let infoViewDelegate: InfoViewDelegate
     
     // MARK: - Initializers
     
-    init() {
+    init(infoViewDelegate: InfoViewDelegate) {
+        self.infoViewDelegate = infoViewDelegate
         super.init(frame: .zero)
         setupUI()
     }
