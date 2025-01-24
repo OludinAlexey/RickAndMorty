@@ -13,6 +13,9 @@ final class DetailsView: UIView {
     
     // MARK: - Private properties
     
+    private lazy var titleLabel = UILabel.getTitleLabel("Details")
+    private lazy var detailsFrameView = DetailsFrameView()
+    
     // MARK: - Initializers
     
     init() {
@@ -37,18 +40,27 @@ final class DetailsView: UIView {
     // MARK: - Private methods
     
     private func setupUI() {
-        backgroundColor = .cyan
         addSubviews()
         setupLayout()
     }
     
     private func addSubviews() {
-        [ ] .forEach { addSubview($0) }
+        [ titleLabel, detailsFrameView ] .forEach { addSubview($0) }
     }
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 22.fitH),
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 50.fitH),
+            titleLabel.widthAnchor.constraint(equalToConstant: 220.fitW)
+        ])
+        
+        NSLayoutConstraint.activate([
+            detailsFrameView.topAnchor.constraint(equalTo: topAnchor, constant: 106.fitH),
+            detailsFrameView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            detailsFrameView.heightAnchor.constraint(equalToConstant: 639.fitH),
+            detailsFrameView.widthAnchor.constraint(equalToConstant: 312.fitW)
         ])
     }
 }

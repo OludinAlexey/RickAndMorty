@@ -28,6 +28,24 @@ extension UILabel {
         return label
     }
     
+    static func getLabel(_ text: String, font: UIFont, textColor: UIColor, underlined: Bool) -> UILabel {
+        let label = UILabel()
+        if underlined {
+            let underlineAttribute = [
+                NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue
+            ]
+            let underlineAttributedString = NSAttributedString(string: text, attributes: underlineAttribute)
+            label.attributedText = underlineAttributedString
+        } else {
+            label.text = text
+        }
+        label.toAutoLayout()
+        label.font = font
+        label.textColor = textColor
+        label.textAlignment = .left
+        return label
+    }
+    
     static func getTitleLabel(_ text: String) -> UILabel {
         let label = UILabel()
         label.toAutoLayout()

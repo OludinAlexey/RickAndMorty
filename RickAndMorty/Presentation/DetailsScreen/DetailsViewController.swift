@@ -14,7 +14,7 @@ final class DetailsViewController: UIViewController {
     // MARK: - Private properties
     
     private lazy var mainView = {
-        let view = UIView()
+        let view = DetailsView()
         return view
     }()
     
@@ -32,6 +32,7 @@ final class DetailsViewController: UIViewController {
     
     override func loadView() {
         view = mainView
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
     // MARK: - Public methods
