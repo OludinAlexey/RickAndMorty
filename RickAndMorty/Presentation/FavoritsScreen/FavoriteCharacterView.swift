@@ -34,7 +34,7 @@ final class FavoriteCharacterView: UIView {
     
     private let infoViewDelegate: InfoViewDelegate
     private lazy var favoritesLabelsView = FavoritesLabelsView()
-    private lazy var favoriteView: FavoriteView = FavoriteView()
+    private lazy var favoriteView: FavoriteStarView = FavoriteStarView()
     private lazy var characterInfoView: InfoView = InfoView(delegate: infoViewDelegate)
     
     // MARK: - Initializers

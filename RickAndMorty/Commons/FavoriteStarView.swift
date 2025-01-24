@@ -1,5 +1,5 @@
 //
-//  FavoriteView.swift
+//  FavoriteStarView.swift
 //  RickAndMorty
 //
 //  Created by Алексей Олудин on 11.01.2025.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FavoriteView: UIView {
+final class FavoriteStarView: UIView {
     
     // MARK: - Public properties
     

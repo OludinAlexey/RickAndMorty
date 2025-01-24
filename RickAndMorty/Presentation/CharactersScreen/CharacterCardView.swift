@@ -45,7 +45,7 @@ final class CharacterCardView: UIView {
         return imageView
     }()
     
-    private lazy var favoriteView: FavoriteView = FavoriteView()
+    private lazy var favoriteView: FavoriteStarView = FavoriteStarView()
     private lazy var characterInfoView: InfoView = InfoView(delegate: infoViewDelegate)
     
     private lazy var nextPrevButtonsView = NextPrevButtonsView(nextButtonImage: R.image.arrowRightWhite ()!, prevButtonImage: R.image.arrowLeftWhite()!)

@@ -36,7 +36,7 @@ final class SearchedCharactersView: UIView {
     
     private lazy var descriptionLabelsView = DescriptionLabelsView()
     
-    private lazy var favoriteView: FavoriteView = FavoriteView()
+    private lazy var favoriteView: FavoriteStarView = FavoriteStarView()
     private lazy var characterInfoView: InfoView = InfoView(delegate: infoViewDelegate)
     
     // MARK: - Initializers
