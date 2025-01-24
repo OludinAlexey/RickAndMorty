@@ -12,20 +12,8 @@ final class SearchView: UIView {
     // MARK: - Public properties
     
     // MARK: - Private properties
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.toAutoLayout()
-        label.font = R.font.inter28ptRegular(size: 24)
-        label.textColor = R.color.primaryText()
-        label.textAlignment = .center
-        label.numberOfLines = 2
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.2
-        label.text = "Search"
-        return label
-    }()
-    
+
+    private lazy var titleLabel = UILabel.getTitleLabel("Search")
     
     private let infoViewDelegate: InfoViewDelegate
     private lazy var searchFrameView = SearchFrameView(infoViewDelegate: infoViewDelegate)

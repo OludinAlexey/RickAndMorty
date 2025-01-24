@@ -13,20 +13,8 @@ final class CharactersView: UIView {
     
     // MARK: - Private properties
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.toAutoLayout()
-        label.font = R.font.inter28ptRegular(size: 24)
-        label.textColor = R.color.primaryText()
-        label.textAlignment = .center
-        label.numberOfLines = 2
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.2
-        label.text = "Characters"
-        return label
-    }()
-    
     private let infoViewDelegate: InfoViewDelegate
+    private lazy var titleLabel = UILabel.getTitleLabel("Characters")
     private lazy var characterCardView = CharacterCardView(infoViewDelegate: infoViewDelegate)
     
     // MARK: - Initializers
