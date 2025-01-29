@@ -33,6 +33,10 @@ final class CharactersView: UIView {
     
     // MARK: - Public methods
     
+    func updateCharacterView(character: Character) {
+        characterCardView.update(character: character)
+    }
+    
     // MARK: - Actions
     
     @objc private func someAction() {

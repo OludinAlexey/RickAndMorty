@@ -18,6 +18,8 @@ final class CharactersViewController: UIViewController {
         return view
     }()
     
+    private lazy var characters = getCharacters()
+    
     // MARK: - Initializers
     
     init() {
@@ -32,7 +34,11 @@ final class CharactersViewController: UIViewController {
     
     override func loadView() {
         view = mainView
-        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mainView.updateCharacterView(character: characters[0])
     }
     
     // MARK: - Public methods
@@ -44,6 +50,36 @@ final class CharactersViewController: UIViewController {
     private func showInfoView() {
         navigationController?.pushViewController(DetailsViewController(), animated: true)
     }
+    
+    private func getCharacters() -> [Character] {
+        let characters = [
+            Character(
+                id: 1,
+                name: "Morty Smith",
+                status: "Alive",
+                gender: "Male",
+                species: "Human",
+                origin: "Unknown",
+                created: "2017-11-04T18:50:21.651Z",
+                location: "Citadel of Ricks",
+                image: R.image.morty()!
+            ),
+            Character(
+                id: 2,
+                name: "Rick Sanchez",
+                status: "Alive",
+                gender: "Male",
+                species: "Human",
+                origin: "Earth (C-137)",
+                created: "2017-11-04T18:48:46.250Z",
+                location: "Citadel of Ricks",
+                image: R.image.rick()!
+            )
+        ]
+        return characters
+    }
+    
+    
 }
 
 extension CharactersViewController: InfoViewDelegate {

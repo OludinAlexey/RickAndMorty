@@ -17,15 +17,15 @@ final class CharacterCardView: UIView {
     private let valueFont: UIFont = R.font.inter28ptRegular(size: 15)!
     private let infoViewDelegate: InfoViewDelegate
     
-    private lazy var planetTitleLabel: UILabel = UILabel.getLabel("Planet:", font: titleFont)
+    private lazy var locationTitleLabel: UILabel = UILabel.getLabel("Location:", font: titleFont)
     private lazy var nameTitleLabel: UILabel = UILabel.getLabel("Name:", font: titleFont)
     private lazy var statusTitleLabel: UILabel = UILabel.getLabel("Status:", font: titleFont)
     private lazy var createdTitleLabel: UILabel = UILabel.getLabel("Created:", font: titleFont)
     
-    private lazy var planetLabel: UILabel = UILabel.getLabel("Earth", font: valueFont)
-    private lazy var nameLabel: UILabel = UILabel.getLabel("Morty Smith", font: valueFont)
-    private lazy var statusLabel: UILabel = UILabel.getLabel("Alive", font: valueFont)
-    private lazy var createdLabel: UILabel = UILabel.getLabel("2017-11-04T18:48:46.250Z", font: valueFont)
+    private lazy var locationLabel: UILabel = UILabel.getLabel("", font: valueFont)
+    private lazy var nameLabel: UILabel = UILabel.getLabel("", font: valueFont)
+    private lazy var statusLabel: UILabel = UILabel.getLabel("", font: valueFont)
+    private lazy var createdLabel: UILabel = UILabel.getLabel("", font: valueFont)
     
     private lazy var characterImageView: UIImageView = {
         let imageView = UIImageView()
@@ -67,6 +67,14 @@ final class CharacterCardView: UIView {
     
     // MARK: - Public methods
     
+    func update(character: Character) {
+        locationLabel.text = character.location
+        nameLabel.text = character.name
+        statusLabel.text = character.status
+        createdLabel.text = character.created
+        characterImageView.image = character.image
+    }
+    
     // MARK: - Actions
     
     @objc private func someAction() {
@@ -94,7 +102,7 @@ final class CharacterCardView: UIView {
     
     private func addSubviews() {
         [
-            planetTitleLabel, planetLabel,
+            locationTitleLabel, locationLabel,
             nameTitleLabel, nameLabel,
             statusTitleLabel, statusLabel,
             createdTitleLabel, createdLabel,
@@ -108,23 +116,23 @@ final class CharacterCardView: UIView {
     private func setupLayout() {
         toAutoLayout()
         NSLayoutConstraint.activate([
-            planetTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 19.fitH),
-            planetTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 39.fitW),
-            planetLabel.topAnchor.constraint(equalTo: planetTitleLabel.topAnchor),
-            planetLabel.leadingAnchor.constraint(equalTo: planetTitleLabel.trailingAnchor, constant: 8.fitW),
+            locationTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 19.fitH),
+            locationTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 39.fitW),
+            locationLabel.topAnchor.constraint(equalTo: locationTitleLabel.topAnchor),
+            locationLabel.leadingAnchor.constraint(equalTo: locationTitleLabel.trailingAnchor, constant: 8.fitW),
             
-            nameTitleLabel.topAnchor.constraint(equalTo: planetTitleLabel.bottomAnchor, constant: 14.fitH),
-            nameTitleLabel.leadingAnchor.constraint(equalTo: planetTitleLabel.leadingAnchor),
+            nameTitleLabel.topAnchor.constraint(equalTo: locationTitleLabel.bottomAnchor, constant: 14.fitH),
+            nameTitleLabel.leadingAnchor.constraint(equalTo: locationTitleLabel.leadingAnchor),
             nameLabel.topAnchor.constraint(equalTo: nameTitleLabel.topAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: nameTitleLabel.trailingAnchor, constant: 8.fitW),
             
             statusTitleLabel.topAnchor.constraint(equalTo: nameTitleLabel.bottomAnchor, constant: 15.fitH),
-            statusTitleLabel.leadingAnchor.constraint(equalTo: planetTitleLabel.leadingAnchor),
+            statusTitleLabel.leadingAnchor.constraint(equalTo: locationTitleLabel.leadingAnchor),
             statusLabel.topAnchor.constraint(equalTo: statusTitleLabel.topAnchor),
             statusLabel.leadingAnchor.constraint(equalTo: statusTitleLabel.trailingAnchor, constant: 8.fitW),
             
             createdTitleLabel.topAnchor.constraint(equalTo: statusTitleLabel.bottomAnchor, constant: 14.fitH),
-            createdTitleLabel.leadingAnchor.constraint(equalTo: planetTitleLabel.leadingAnchor),
+            createdTitleLabel.leadingAnchor.constraint(equalTo: locationTitleLabel.leadingAnchor),
             createdLabel.topAnchor.constraint(equalTo: createdTitleLabel.topAnchor),
             createdLabel.leadingAnchor.constraint(equalTo: createdTitleLabel.trailingAnchor, constant: 8.fitW)
         ])
