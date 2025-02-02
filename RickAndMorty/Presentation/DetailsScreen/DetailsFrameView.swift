@@ -21,6 +21,8 @@ final class DetailsFrameView: UIView {
         imageView.backgroundColor = R.color.starBackgroundGray()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.borderColor = R.color.dark()!.cgColor
+        imageView.layer.borderWidth = 3
         imageView.roundCorners(
             corners: [
                 .layerMaxXMaxYCorner,
