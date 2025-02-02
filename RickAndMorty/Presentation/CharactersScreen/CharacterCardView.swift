@@ -77,6 +77,22 @@ final class CharacterCardView: UIView {
         characterImageView.image = character.image
     }
     
+    func deactivateNextButton() {
+        nextPrevButtonsView.deactivateNextButton()
+    }
+    
+    func deactivatePrevButton() {
+        nextPrevButtonsView.deactivatePrevButton()
+    }
+    
+    func activateNextButton() {
+        nextPrevButtonsView.activateNextButton()
+    }
+    
+    func activatePrevButton() {
+        nextPrevButtonsView.activatePrevButton()
+    }
+    
     // MARK: - Actions
     
     @objc private func someAction() {

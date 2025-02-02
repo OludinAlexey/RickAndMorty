@@ -39,7 +39,7 @@ final class CharactersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainView.updateCharacterView(character: characters[currentCharacterIndex])
+        updateView()
     }
     
     // MARK: - Public methods
@@ -50,6 +50,11 @@ final class CharactersViewController: UIViewController {
     
     private func showInfoView() {
         navigationController?.pushViewController(DetailsViewController(character: characters[currentCharacterIndex]), animated: true)
+    }
+    
+    private func updateView() {
+        mainView.updateCharacterView(character: characters[currentCharacterIndex])
+        setNextPrevButtonsState()
     }
     
     private func getCharacters() -> [Character] {
@@ -89,23 +94,21 @@ extension CharactersViewController: InfoViewDelegate {
 
 extension CharactersViewController: NextPrevButtonsViewDelegate {
     func nextButtonDidTap() {
-        if currentCharacterIndex < characters.count - 1{
+        if currentCharacterIndex < characters.count - 1 {
             currentCharacterIndex += 1
-            mainView.updateCharacterView(character: characters[currentCharacterIndex])
-        } else {
-            print("Реализовать деактивацию кнопки")
+            updateView()
         }
-        
     }
     
     func prevButtonDidTap() {
         if currentCharacterIndex > 0 {
             currentCharacterIndex -= 1
-            mainView.updateCharacterView(character: characters[currentCharacterIndex])
-        } else {
-            print("Реализовать деактивацию кнопки")
+            updateView()
         }
     }
     
-    
+    private func setNextPrevButtonsState() {
+        currentCharacterIndex == 0 ? mainView.deactivatePrevButton() : mainView.activatePrevButton()
+        currentCharacterIndex == characters.count - 1 ? mainView.deactivateNextButton() : mainView.activateNextButton()
+    }
 }

@@ -39,6 +39,22 @@ final class CharactersView: UIView {
         characterCardView.update(character: character)
     }
     
+    func deactivateNextButton() {
+        characterCardView.deactivateNextButton()
+    }
+    
+    func deactivatePrevButton() {
+        characterCardView.deactivatePrevButton()
+    }
+    
+    func activateNextButton() {
+        characterCardView.activateNextButton()
+    }
+    
+    func activatePrevButton() {
+        characterCardView.activatePrevButton()
+    }
+    
     // MARK: - Actions
     
     @objc private func someAction() {

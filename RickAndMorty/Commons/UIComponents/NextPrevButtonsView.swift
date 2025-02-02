@@ -58,6 +58,22 @@ final class NextPrevButtonsView: UIView {
     
     // MARK: - Public methods
     
+    func deactivateNextButton() {
+        nextCharacterButton.isEnabled = false
+    }
+    
+    func deactivatePrevButton() {
+        prevCharacterButton.isEnabled = false
+    }
+    
+    func activateNextButton() {
+        nextCharacterButton.isEnabled = true
+    }
+    
+    func activatePrevButton() {
+        prevCharacterButton.isEnabled = true
+    }
+    
     // MARK: - Actions
     
     @objc private func nextButtonDidTap() {
