@@ -14,13 +14,15 @@ final class CharactersView: UIView {
     // MARK: - Private properties
     
     private let infoViewDelegate: InfoViewDelegate
+    private let nextPrevButtonsViewDelegate: NextPrevButtonsViewDelegate
     private lazy var titleLabel = UILabel.getTitleLabel("Characters")
-    private lazy var characterCardView = CharacterCardView(infoViewDelegate: infoViewDelegate)
+    private lazy var characterCardView = CharacterCardView(infoViewDelegate: infoViewDelegate, nextPrevButtonsDelegate: nextPrevButtonsViewDelegate)
     
     // MARK: - Initializers
     
-    init(infoViewDelegate: InfoViewDelegate) {
+    init(infoViewDelegate: InfoViewDelegate, nextPrevButtonsViewDelegate: NextPrevButtonsViewDelegate) {
         self.infoViewDelegate = infoViewDelegate
+        self.nextPrevButtonsViewDelegate = nextPrevButtonsViewDelegate
         super.init(frame: .zero)
         setupUI()
     }

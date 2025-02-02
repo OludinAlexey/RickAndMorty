@@ -14,7 +14,7 @@ final class CharactersViewController: UIViewController {
     // MARK: - Private properties
     
     private lazy var mainView = {
-        let view = CharactersView(infoViewDelegate: self)
+        let view = CharactersView(infoViewDelegate: self, nextPrevButtonsViewDelegate: self)
         return view
     }()
     
@@ -85,4 +85,27 @@ extension CharactersViewController: InfoViewDelegate {
     func infoViewDidTap() {
         showInfoView()
     }
+}
+
+extension CharactersViewController: NextPrevButtonsViewDelegate {
+    func nextButtonDidTap() {
+        if currentCharacterIndex < characters.count - 1{
+            currentCharacterIndex += 1
+            mainView.updateCharacterView(character: characters[currentCharacterIndex])
+        } else {
+            print("Реализовать деактивацию кнопки")
+        }
+        
+    }
+    
+    func prevButtonDidTap() {
+        if currentCharacterIndex > 0 {
+            currentCharacterIndex -= 1
+            mainView.updateCharacterView(character: characters[currentCharacterIndex])
+        } else {
+            print("Реализовать деактивацию кнопки")
+        }
+    }
+    
+    
 }

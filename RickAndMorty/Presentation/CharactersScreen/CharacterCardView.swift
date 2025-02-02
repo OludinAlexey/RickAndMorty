@@ -16,6 +16,7 @@ final class CharacterCardView: UIView {
     private let titleFont: UIFont = R.font.inter28ptBold(size: 15)!
     private let valueFont: UIFont = R.font.inter28ptRegular(size: 15)!
     private let infoViewDelegate: InfoViewDelegate
+    private let nextPrevButtonsDelegate: NextPrevButtonsViewDelegate
     
     private lazy var locationTitleLabel: UILabel = UILabel.getLabel("Location:", font: titleFont)
     private lazy var nameTitleLabel: UILabel = UILabel.getLabel("Name:", font: titleFont)
@@ -48,13 +49,14 @@ final class CharacterCardView: UIView {
     private lazy var favoriteView: FavoriteStarView = FavoriteStarView()
     private lazy var characterInfoView: InfoView = InfoView(delegate: infoViewDelegate)
     
-    private lazy var nextPrevButtonsView = NextPrevButtonsView(nextButtonImage: R.image.arrowRightWhite ()!, prevButtonImage: R.image.arrowLeftWhite()!)
+    private lazy var nextPrevButtonsView = NextPrevButtonsView(nextButtonImage: R.image.arrowRightWhite ()!, prevButtonImage: R.image.arrowLeftWhite()!, delegate: nextPrevButtonsDelegate)
     
     
     // MARK: - Initializers
     
-    init(infoViewDelegate: InfoViewDelegate) {
+    init(infoViewDelegate: InfoViewDelegate, nextPrevButtonsDelegate: NextPrevButtonsViewDelegate) {
         self.infoViewDelegate = infoViewDelegate
+        self.nextPrevButtonsDelegate = nextPrevButtonsDelegate
         super.init(frame: .zero)
         setupUI()
     }

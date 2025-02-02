@@ -14,7 +14,7 @@ final class SearchViewController: UIViewController {
     // MARK: - Private properties
     
     private lazy var mainView = {
-        let view = SearchView(infoViewDelegate: self)
+        let view = SearchView(infoViewDelegate: self, nextPrevButtonsViewDelegate: self)
         return view
     }()
     
@@ -49,5 +49,15 @@ final class SearchViewController: UIViewController {
 extension SearchViewController: InfoViewDelegate {
     func infoViewDidTap() {
         showInfoView()
+    }
+}
+
+extension SearchViewController: NextPrevButtonsViewDelegate {
+    func nextButtonDidTap() {
+        print(#function)
+    }
+    
+    func prevButtonDidTap() {
+        print(#function)
     }
 }

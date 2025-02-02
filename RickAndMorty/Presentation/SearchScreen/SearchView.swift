@@ -16,12 +16,14 @@ final class SearchView: UIView {
     private lazy var titleLabel = UILabel.getTitleLabel("Search")
     
     private let infoViewDelegate: InfoViewDelegate
-    private lazy var searchFrameView = SearchFrameView(infoViewDelegate: infoViewDelegate)
+    private let nextPrevButtonsViewDelegate: NextPrevButtonsViewDelegate
+    private lazy var searchFrameView = SearchFrameView(infoViewDelegate: infoViewDelegate, nextPrevButtonsViewDelegate: nextPrevButtonsViewDelegate)
     
     // MARK: - Initializers
     
-    init(infoViewDelegate: InfoViewDelegate) {
+    init(infoViewDelegate: InfoViewDelegate, nextPrevButtonsViewDelegate: NextPrevButtonsViewDelegate) {
         self.infoViewDelegate = infoViewDelegate
+        self.nextPrevButtonsViewDelegate = nextPrevButtonsViewDelegate
         super.init(frame: .zero)
         setupUI()
     }

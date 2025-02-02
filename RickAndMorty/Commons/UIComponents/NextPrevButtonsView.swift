@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol NextPrevButtonsViewDelegate: AnyObject {
+    func nextButtonDidTap()
+    func prevButtonDidTap()
+}
+
 final class NextPrevButtonsView: UIView {
     
     // MARK: - Public properties
     
     // MARK: - Private properties
     
+    private let delegate: NextPrevButtonsViewDelegate
     private var nextButtonImage: UIImage
     private var prevButtonImage: UIImage
     
@@ -21,6 +27,7 @@ final class NextPrevButtonsView: UIView {
         button.toAutoLayout()
         button.setImage(prevButtonImage, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(prevButtonDidTap), for: .touchUpInside)
         return button
     }()
     
@@ -29,12 +36,14 @@ final class NextPrevButtonsView: UIView {
         button.toAutoLayout()
         button.setImage(nextButtonImage, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
         return button
     }()
     
     // MARK: - Initializers
     
-    init(nextButtonImage: UIImage, prevButtonImage: UIImage) {
+    init(nextButtonImage: UIImage, prevButtonImage: UIImage, delegate: NextPrevButtonsViewDelegate) {
+        self.delegate = delegate
         self.nextButtonImage = nextButtonImage
         self.prevButtonImage = prevButtonImage
         super.init(frame: .zero)
@@ -51,8 +60,14 @@ final class NextPrevButtonsView: UIView {
     
     // MARK: - Actions
     
-    @objc private func someAction() {
-        
+    @objc private func nextButtonDidTap() {
+        print(#function)
+        delegate.nextButtonDidTap()
+    }
+    
+    @objc private func prevButtonDidTap() {
+        print(#function)
+        delegate.prevButtonDidTap()
     }
     
     // MARK: - Private methods
