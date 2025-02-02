@@ -19,6 +19,7 @@ final class CharactersViewController: UIViewController {
     }()
     
     private lazy var characters = getCharacters()
+    private var currentCharacterIndex: Int = 1
     
     // MARK: - Initializers
     
@@ -38,7 +39,7 @@ final class CharactersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainView.updateCharacterView(character: characters[0])
+        mainView.updateCharacterView(character: characters[currentCharacterIndex])
     }
     
     // MARK: - Public methods
@@ -48,7 +49,7 @@ final class CharactersViewController: UIViewController {
     // MARK: - Private methods
     
     private func showInfoView() {
-        navigationController?.pushViewController(DetailsViewController(), animated: true)
+        navigationController?.pushViewController(DetailsViewController(character: characters[currentCharacterIndex]), animated: true)
     }
     
     private func getCharacters() -> [Character] {
@@ -78,8 +79,6 @@ final class CharactersViewController: UIViewController {
         ]
         return characters
     }
-    
-    
 }
 
 extension CharactersViewController: InfoViewDelegate {

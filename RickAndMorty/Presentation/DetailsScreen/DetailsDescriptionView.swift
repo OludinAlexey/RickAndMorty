@@ -13,37 +13,45 @@ final class DetailsDescriptionView: UIView {
     
     // MARK: - Private properties
     
+    private var character: Character = Character()
+    
     private let titleFont: UIFont = R.font.inter28ptBold(size: 24)!
     private let valueFont: UIFont = R.font.inter28ptRegular(size: 24)!
     
     private lazy var nameLabel: UILabel = {
-        let label = UILabel.getLabel("Rick Sanchez", font: valueFont, textColor: .black, underlined: true)
+        let label = UILabel.getLabel(character.name, font: valueFont, textColor: .black, underlined: true)
         label.textAlignment = .center
         label.contentMode = .center
         return label
     }()
     
     private lazy var idTitleLabel = UILabel.getLabel("ID:", font: titleFont, textColor: .black)
-    private lazy var idLabel = UILabel.getLabel("1", font: valueFont, textColor: .black)
+    private lazy var idLabel = UILabel.getLabel(String(character.id), font: valueFont, textColor: .black)
     
     private lazy var statusTitleLabel = UILabel.getLabel("Status:", font: titleFont, textColor: .black)
-    private lazy var statusLabel = UILabel.getLabel("Alive", font: valueFont, textColor: .black)
+    private lazy var statusLabel = UILabel.getLabel(character.status, font: valueFont, textColor: .black)
     
     private lazy var speciesTitleLabel = UILabel.getLabel("Species:", font: titleFont, textColor: .black)
-    private lazy var speciesLabel = UILabel.getLabel("Human", font: valueFont, textColor: .black)
+    private lazy var speciesLabel = UILabel.getLabel(character.species, font: valueFont, textColor: .black)
     
     private lazy var genderTitleLabel = UILabel.getLabel("Gender:", font: titleFont, textColor: .black)
-    private lazy var genderLabel = UILabel.getLabel("Male", font: valueFont, textColor: .black)
+    private lazy var genderLabel = UILabel.getLabel(character.gender, font: valueFont, textColor: .black)
     
     private lazy var originTitleLabel = UILabel.getLabel("Origin:", font: titleFont, textColor: .black)
-    private lazy var originLabel = UILabel.getLabel("Earth (C-137)", font: valueFont, textColor: .black)
+    private lazy var originLabel = UILabel.getLabel(character.origin, font: valueFont, textColor: .black)
     
     private lazy var planetTitleLabel = UILabel.getLabel("Planet:", font: titleFont, textColor: .black)
-    private lazy var planetLabel = UILabel.getLabel("Earth", font: valueFont, textColor: .black)
+    private lazy var planetLabel = UILabel.getLabel(character.location, font: valueFont, textColor: .black)
     
     // MARK: - Initializers
     
     init() {
+        super.init(frame: .zero)
+        setupUI()
+    }
+    
+    init(character: Character) {
+        self.character = character
         super.init(frame: .zero)
         setupUI()
     }

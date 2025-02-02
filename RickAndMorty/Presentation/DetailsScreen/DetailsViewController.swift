@@ -14,13 +14,20 @@ final class DetailsViewController: UIViewController {
     // MARK: - Private properties
     
     private lazy var mainView = {
-        let view = DetailsView()
+        let view = DetailsView(character: character)
         return view
     }()
+    
+    private var character = Character()
     
     // MARK: - Initializers
     
     init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(character: Character) {
+        self.character = character
         super.init(nibName: nil, bundle: nil)
     }
     

@@ -41,7 +41,7 @@ final class SearchViewController: UIViewController {
     // MARK: - Private methods
     
     private func showInfoView() {
-        navigationController?.pushViewController(DetailsViewController(), animated: true)
+        navigationController?.pushViewController(DetailsViewController(character: Character()), animated: true)
     }
     
 }

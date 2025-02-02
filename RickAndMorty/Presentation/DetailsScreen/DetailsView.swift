@@ -13,12 +13,19 @@ final class DetailsView: UIView {
     
     // MARK: - Private properties
     
+    private var character: Character = Character()
     private lazy var titleLabel = UILabel.getTitleLabel("Details")
-    private lazy var detailsFrameView = DetailsFrameView()
+    private lazy var detailsFrameView = DetailsFrameView(character: character)
     
     // MARK: - Initializers
     
     init() {
+        super.init(frame: .zero)
+        setupUI()
+    }
+    
+    init(character: Character) {
+        self.character = character
         super.init(frame: .zero)
         setupUI()
     }

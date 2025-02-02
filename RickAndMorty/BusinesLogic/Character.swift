@@ -19,6 +19,18 @@ class Character {
     let location: String
     let image: UIImage
     
+    init() {
+        id = 0
+        name = ""
+        status = ""
+        gender = ""
+        species = ""
+        origin = ""
+        created = ""
+        location = ""
+        image = UIImage()
+    }
+    
     init(id: Int, name: String, status: String, gender: String, species: String, origin: String, created: String, location: String, image: UIImage) {
         self.id = id
         self.name = name

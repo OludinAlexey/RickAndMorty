@@ -13,10 +13,11 @@ final class DetailsFrameView: UIView {
     
     // MARK: - Private properties
     
+    private var character: Character = Character()
     private lazy var detailsImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.toAutoLayout()
-        imageView.image = R.image.rick()
+        imageView.image = character.image
         imageView.backgroundColor = R.color.starBackgroundGray()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
@@ -32,11 +33,17 @@ final class DetailsFrameView: UIView {
         return imageView
     }()
     
-    private lazy var detailsDescriptionView = DetailsDescriptionView()
+    private lazy var detailsDescriptionView = DetailsDescriptionView(character: character)
     
     // MARK: - Initializers
     
     init() {
+        super.init(frame: .zero)
+        setupUI()
+    }
+    
+    init(character: Character) {
+        self.character = character
         super.init(frame: .zero)
         setupUI()
     }
