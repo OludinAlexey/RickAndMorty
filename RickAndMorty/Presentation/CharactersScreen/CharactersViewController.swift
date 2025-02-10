@@ -17,14 +17,22 @@ final class CharactersViewController: UIViewController {
         let view = CharactersView(infoViewDelegate: self, nextPrevButtonsViewDelegate: self)
         return view
     }()
-    
+    private var page: Page?
     private lazy var characters = getCharacters()
     private var currentCharacterIndex: Int = 1
+    private let serviceProvider: ServiceProvider! = .init()
     
     // MARK: - Initializers
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.serviceProvider.networkManager.request { (info: Page) in
+                print(info)
+                self.page = info
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -58,6 +66,7 @@ final class CharactersViewController: UIViewController {
     }
     
     private func getCharacters() -> [Character] {
+        let imageMorty = NetworkManager.shared.downloadImage(from: URL(string: "https://rickandmortyapi.com/api/character/avatar/2.jpeg")!)
         let characters = [
             Character(
                 id: 1,
@@ -68,7 +77,7 @@ final class CharactersViewController: UIViewController {
                 origin: "Unknown",
                 created: "2017-11-04T18:50:21.651Z",
                 location: "Citadel of Ricks",
-                image: R.image.morty()!
+                image: imageMorty
             ),
             Character(
                 id: 2,
