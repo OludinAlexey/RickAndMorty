@@ -20,6 +20,7 @@ struct Page: Codable {
     }
 
     struct Result: Codable {
+        
         let id: Int?
         let name: String?
         let status: String?
@@ -28,7 +29,7 @@ struct Page: Codable {
         let origin: Origin?
         let created: String?
         let location: Location?
-        let imageURL: String?
+        let image: String?
     }
     
     struct Origin: Codable {

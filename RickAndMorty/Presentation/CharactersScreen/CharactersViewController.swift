@@ -141,7 +141,7 @@ extension CharactersViewController: NextPrevButtonsViewDelegate {
                         origin: result.origin?.name ?? "unknown",
                         created: result.created ?? "unknown",
                         location: result.location?.name ?? "unknown",
-                        imageURL: result.imageURL ?? "unknown"
+                        imageURL: result.image ?? "unknown"
                     )
                 )
         })
