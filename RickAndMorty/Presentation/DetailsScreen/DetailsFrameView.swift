@@ -17,7 +17,7 @@ final class DetailsFrameView: UIView {
     private lazy var detailsImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.toAutoLayout()
-        imageView.image = character.image
+        imageView.downloaded(from: character.imageURL!)
         imageView.backgroundColor = R.color.starBackgroundGray()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill

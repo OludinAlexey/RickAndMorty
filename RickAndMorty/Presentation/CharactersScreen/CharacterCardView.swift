@@ -31,7 +31,7 @@ final class CharacterCardView: UIView {
     private lazy var characterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.toAutoLayout()
-        imageView.image = R.image.morty()
+        imageView.backgroundColor = .gray
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.roundCorners(
@@ -74,7 +74,7 @@ final class CharacterCardView: UIView {
         nameLabel.text = character.name
         statusLabel.text = character.status
         createdLabel.text = character.created
-        characterImageView.image = character.image
+        characterImageView.downloaded(from: character.imageURL!, contentMode: .scaleAspectFill)
     }
     
     func deactivateNextButton() {

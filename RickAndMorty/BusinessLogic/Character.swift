@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 
 class Character {
-    let id: Int
-    let name: String
-    let status: String
-    let gender: String
-    let species: String
-    let origin: String
-    let created: String
-    let location: String
-    let image: UIImage
+    let id: Int?
+    let name: String?
+    let status: String?
+    let gender: String?
+    let species: String?
+    let origin: String?
+    let created: String?
+    let location: String?
+    let imageURL: String?
     
     init() {
         id = 0
@@ -28,10 +28,10 @@ class Character {
         origin = ""
         created = ""
         location = ""
-        image = UIImage()
+        imageURL = ""
     }
     
-    init(id: Int, name: String, status: String, gender: String, species: String, origin: String, created: String, location: String, image: UIImage) {
+    init(id: Int, name: String, status: String, gender: String, species: String, origin: String, created: String, location: String, imageURL: String) {
         self.id = id
         self.name = name
         self.status = status
@@ -40,6 +40,6 @@ class Character {
         self.origin = origin
         self.created = created
         self.location = location
-        self.image = image
+        self.imageURL = imageURL
     }
 }

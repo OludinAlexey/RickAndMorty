@@ -18,21 +18,16 @@ final class CharactersViewController: UIViewController {
         return view
     }()
     private var page: Page?
-    private lazy var characters = getCharacters()
-    private var currentCharacterIndex: Int = 1
+    private var characters: [Character] = []
+    private var currentCharacterIndex: Int = 0
     private let serviceProvider: ServiceProvider! = .init()
+    private var model = CharactersModel()
     
     // MARK: - Initializers
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.serviceProvider.networkManager.request { (info: Page) in
-                print(info)
-                self.page = info
-            }
-        }
+        model.subscribe(self)
     }
     
     required init?(coder: NSCoder) {
@@ -48,6 +43,7 @@ final class CharactersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateView()
+        model.notify()
     }
     
     // MARK: - Public methods
@@ -61,37 +57,48 @@ final class CharactersViewController: UIViewController {
     }
     
     private func updateView() {
+        guard !characters.isEmpty else { return }
         mainView.updateCharacterView(character: characters[currentCharacterIndex])
         setNextPrevButtonsState()
     }
     
+    private func getPage() -> Page? {
+        var page: Page?
+        self.serviceProvider.networkManager.request { (info: Page) in
+                print(info)
+                page = info
+        }
+        return page
+    }
+    
     private func getCharacters() -> [Character] {
-        let imageMorty = NetworkManager.shared.downloadImage(from: URL(string: "https://rickandmortyapi.com/api/character/avatar/2.jpeg")!)
-        let characters = [
-            Character(
-                id: 1,
-                name: "Morty Smith",
-                status: "Alive",
-                gender: "Male",
-                species: "Human",
-                origin: "Unknown",
-                created: "2017-11-04T18:50:21.651Z",
-                location: "Citadel of Ricks",
-                image: imageMorty
-            ),
-            Character(
-                id: 2,
-                name: "Rick Sanchez",
-                status: "Alive",
-                gender: "Male",
-                species: "Human",
-                origin: "Earth (C-137)",
-                created: "2017-11-04T18:48:46.250Z",
-                location: "Citadel of Ricks",
-                image: R.image.rick()!
-            )
-        ]
-        return characters
+//        let characters = [
+//            Character(
+//                id: 1,
+//                name: "Morty Smith",
+//                status: "Alive",
+//                gender: "Male",
+//                species: "Human",
+//                origin: "Unknown",
+//                created: "2017-11-04T18:50:21.651Z",
+//                location: "Citadel of Ricks",
+//                imageURL: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
+//            ),
+//            Character(
+//                id: 2,
+//                name: "Rick Sanchez",
+//                status: "Alive",
+//                gender: "Male",
+//                species: "Human",
+//                origin: "Earth (C-137)",
+//                created: "2017-11-04T18:48:46.250Z",
+//                location: "Citadel of Ricks",
+//                imageURL: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+//            )
+//        ]
+        
+        let characters = page?.results as? [Character]
+        return characters ?? []
     }
 }
 
@@ -119,5 +126,34 @@ extension CharactersViewController: NextPrevButtonsViewDelegate {
     private func setNextPrevButtonsState() {
         currentCharacterIndex == 0 ? mainView.deactivatePrevButton() : mainView.activatePrevButton()
         currentCharacterIndex == characters.count - 1 ? mainView.deactivateNextButton() : mainView.activateNextButton()
+    }
+    
+    private func updateCharacters() {
+        page?.results?.forEach(
+            { result in
+                characters.append(
+                    Character(
+                        id: result.id ?? -1,
+                        name: result.name ?? "unknown",
+                        status: result.status ?? "unknown",
+                        gender: result.gender ?? "unknown",
+                        species: result.species ?? "unknown",
+                        origin: result.origin?.name ?? "unknown",
+                        created: result.created ?? "unknown",
+                        location: result.location?.name ?? "unknown",
+                        imageURL: result.imageURL ?? "unknown"
+                    )
+                )
+        })
+    }
+}
+
+extension CharactersViewController: Observer {
+    func update(subject: CharactersModel) {
+        print(#function)
+        guard let page = subject.page else { return }
+        self.page = page
+        updateCharacters()
+        updateView()
     }
 }
