@@ -47,4 +47,12 @@ class CharactersModel {
             self.notify()
         }
     }
+    
+    private func getPage(url: String) {
+        self.serviceProvider.networkManager.request(url) { (info: Page) in
+            self.page = info
+            print(self.page!)
+            self.notify()
+        }
+    }
 }

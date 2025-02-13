@@ -21,8 +21,8 @@ final class NetworkManager {
     
     private init() {}
     
-    func request<T:Decodable>(completion: @escaping (T) -> Void) {
-        guard let url = URL(string: baseURL) else { return }
+    func request<T:Decodable>(_ url: String? = nil, completion: @escaping (T) -> Void) {
+        guard let url = URL(string: url ?? baseURL) else { return }
         let request = URLRequest(url: url)
         
         session.dataTask(with: request) { data, response, error in
@@ -42,23 +42,4 @@ final class NetworkManager {
             }
         }.resume()
     }
-    
-//    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-//        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-//    }
-//    
-//    func downloadImage(from url: URL) -> UIImage {
-//        print("Download Started")
-//        var image = UIImage()
-//        getData(from: url) { data, response, error in
-//            guard let data = data, error == nil else { return }
-//            print(response?.suggestedFilename ?? url.lastPathComponent)
-//            print("Download Finished")
-//            // always update the UI from the main thread
-//            DispatchQueue.main.async() {
-//                image = UIImage(data: data)!
-//            }
-//        }
-//        return image
-//    }
 }

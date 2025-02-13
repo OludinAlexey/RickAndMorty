@@ -62,44 +62,6 @@ final class CharactersViewController: UIViewController {
         setNextPrevButtonsState()
     }
     
-    private func getPage() -> Page? {
-        var page: Page?
-        self.serviceProvider.networkManager.request { (info: Page) in
-                print(info)
-                page = info
-        }
-        return page
-    }
-    
-    private func getCharacters() -> [Character] {
-//        let characters = [
-//            Character(
-//                id: 1,
-//                name: "Morty Smith",
-//                status: "Alive",
-//                gender: "Male",
-//                species: "Human",
-//                origin: "Unknown",
-//                created: "2017-11-04T18:50:21.651Z",
-//                location: "Citadel of Ricks",
-//                imageURL: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
-//            ),
-//            Character(
-//                id: 2,
-//                name: "Rick Sanchez",
-//                status: "Alive",
-//                gender: "Male",
-//                species: "Human",
-//                origin: "Earth (C-137)",
-//                created: "2017-11-04T18:48:46.250Z",
-//                location: "Citadel of Ricks",
-//                imageURL: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-//            )
-//        ]
-        
-        let characters = page?.results as? [Character]
-        return characters ?? []
-    }
 }
 
 extension CharactersViewController: InfoViewDelegate {
@@ -124,8 +86,8 @@ extension CharactersViewController: NextPrevButtonsViewDelegate {
     }
     
     private func setNextPrevButtonsState() {
-        currentCharacterIndex == 0 ? mainView.deactivatePrevButton() : mainView.activatePrevButton()
-        currentCharacterIndex == characters.count - 1 ? mainView.deactivateNextButton() : mainView.activateNextButton()
+        currentCharacterIndex == 0 && page?.info?.prev == nil ? mainView.deactivatePrevButton() : mainView.activatePrevButton()
+        currentCharacterIndex == characters.count - 1 && page?.info?.next == nil ? mainView.deactivateNextButton() : mainView.activateNextButton()
     }
     
     private func updateCharacters() {
