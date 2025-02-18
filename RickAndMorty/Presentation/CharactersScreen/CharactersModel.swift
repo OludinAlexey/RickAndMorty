@@ -16,14 +16,24 @@ struct WeakSubscriber {
 }
 
 class CharactersModel {
+    
+    // MARK: - Public properties
+    
     var page: Page?
     var results: [Character]?
+    
+    // MARK: - Private properties
+    
     private lazy var subscribers: [WeakSubscriber] = []
     private let serviceProvider: ServiceProvider = ServiceProvider()
+    
+    // MARK: - Initializers
     
     init() {
         getPage()
     }
+    
+    // MARK: - Public methods
     
     func subscribe(_ subscriber: Observer) {
         print("subscribed")
@@ -39,6 +49,16 @@ class CharactersModel {
         subscribers.forEach { $0.value?.update(subject: self)
         }
     }
+    
+    func nextPage() {
+        getPage(url: page?.info?.next ?? "")
+    }
+    
+    func prevPage() {
+        getPage(url: page?.info?.prev ?? "")
+    }
+    
+    // MARK: - Private methods
     
     private func getPage() {
         self.serviceProvider.networkManager.request { (info: Page) in

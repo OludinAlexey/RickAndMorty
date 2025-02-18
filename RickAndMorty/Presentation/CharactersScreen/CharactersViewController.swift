@@ -76,6 +76,10 @@ extension CharactersViewController: NextPrevButtonsViewDelegate {
             currentCharacterIndex += 1
             updateView()
         }
+        if currentCharacterIndex == characters.count - 1 && page?.info?.next != nil {
+            model.nextPage()
+        }
+        print(currentCharacterIndex, characters.count, model.page?.info?.count, model.page?.info?.pages)
     }
     
     func prevButtonDidTap() {
@@ -83,14 +87,16 @@ extension CharactersViewController: NextPrevButtonsViewDelegate {
             currentCharacterIndex -= 1
             updateView()
         }
+        print(currentCharacterIndex, characters.count, model.page?.info?.count, model.page?.info?.pages)
     }
     
     private func setNextPrevButtonsState() {
-        currentCharacterIndex == 0 && page?.info?.prev == nil ? mainView.deactivatePrevButton() : mainView.activatePrevButton()
+        currentCharacterIndex == 0 ? mainView.deactivatePrevButton() : mainView.activatePrevButton()
         currentCharacterIndex == characters.count - 1 && page?.info?.next == nil ? mainView.deactivateNextButton() : mainView.activateNextButton()
     }
     
     private func updateCharacters() {
+//        var characters = [Character]()
         page?.results?.forEach(
             { result in
                 characters.append(
@@ -107,6 +113,7 @@ extension CharactersViewController: NextPrevButtonsViewDelegate {
                     )
                 )
         })
+//        self.characters = characters
     }
 }
 
